@@ -12,7 +12,9 @@ Source0:	http://www.kde-apps.org/CONTENT/content-files/84745-%{name}-%{version}.
 # Source0-md5:	eb4db65cf2b252dc39eb844ccc174a4d
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	QtGui-devel >= %{qtver}
+BuildRequires:	automoc4
 BuildRequires:	cmake >= 2.6.1-2
+BuildRequires:	phonon-devel
 BuildRequires:	qpackagekit-devel
 BuildRequires:	qt4-build >= %{qtver}
 BuildRequires:	qt4-qmake >= %{qtver}
