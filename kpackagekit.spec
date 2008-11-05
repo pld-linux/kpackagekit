@@ -1,14 +1,21 @@
+
+%define		qtver	4.4.1
+
 Summary:	the KDE interface for PackageKit
 Summary(pl.UTF-8):	Interface KDE4 dla PackageKit
 Name:		kpackagekit
 Version:	0.3.1
-Release:	0.1
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://www.kde-apps.org/CONTENT/content-files/84745-%{name}-%{version}.tar.bz2
 # Source0-md5:	eb4db65cf2b252dc39eb844ccc174a4d
-URL:		http://
+BuildRequires:	QtCore-devel >= %{qtver}
+BuildRequires:	QtGui-devel >= %{qtver}
+BuildRequires:	cmake >= 2.6.1-2
 BuildRequires:	qpackagekit-devel
+BuildRequires:	qt4-build >= %{qtver}
+BuildRequires:	qt4-qmake >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -22,12 +29,11 @@ Interface KDE4 dla PackageKit
 %setup -q -n KPackageKit
 
 %build
-export QTDIR=%{_prefix}
-mkdir build
+install -d build
 cd build
 %cmake \
-		-DCMAKE_INSTALL_PREFIX=%{_prefix} \
-		../
+	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
+	../
 %{__make}
 
 %install
