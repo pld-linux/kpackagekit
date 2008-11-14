@@ -5,11 +5,13 @@ Summary:	the KDE interface for PackageKit
 Summary(pl.UTF-8):	Interface KDE4 dla PackageKit
 Name:		kpackagekit
 Version:	0.3.1
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://www.kde-apps.org/CONTENT/content-files/84745-%{name}-%{version}.tar.bz2
 # Source0-md5:	eb4db65cf2b252dc39eb844ccc174a4d
+Patch0:		%{name}-kdeinit.patch
+Patch1:		%{name}-pk_api.patch
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	QtGui-devel >= %{qtver}
 BuildRequires:	automoc4
@@ -31,6 +33,8 @@ Interface KDE4 dla PackageKit
 
 %prep
 %setup -q -n KPackageKit
+%patch0 -p1
+%patch1 -p1
 
 %build
 install -d build
