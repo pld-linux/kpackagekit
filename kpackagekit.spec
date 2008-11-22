@@ -14,6 +14,8 @@ Patch0:		%{name}-kdeinit.patch
 Patch1:		%{name}-pk_api.patch
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	QtGui-devel >= %{qtver}
+BuildRequires:	QtNetwork-devel >= %{qtver}
+BuildRequires:	QtSvg-devel >= %{qtver} 
 BuildRequires:	automoc4
 BuildRequires:	cmake >= 2.6.1-2
 BuildRequires:	phonon-devel
@@ -21,6 +23,10 @@ BuildRequires:	qpackagekit-devel
 BuildRequires:	qt4-build >= %{qtver}
 BuildRequires:	qt4-qmake >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	strigi-devel
+BuildRequires:	xorg-lib-libXft-devel
+BuildRequires:	xorg-lib-libXpm-devel
+BuildRequires:	xorg-lib-libXtst-devel
 Requires:	PackageKit
 Requires:	PolicyKit-kde
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
