@@ -1,25 +1,26 @@
 
-%define		qtver	4.4.1
+%define		qtver	4.4.3
+%define		_snap	928700
 
 Summary:	the KDE interface for PackageKit
 Summary(pl.UTF-8):	Interface KDE4 dla PackageKit
 Name:		kpackagekit
-Version:	0.3.1
-Release:	4
+Version:	0.4.0
+Release:	0.%{_snap}.1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://www.kde-apps.org/CONTENT/content-files/84745-%{name}-%{version}.tar.bz2
-# Source0-md5:	eb4db65cf2b252dc39eb844ccc174a4d
-Patch0:		%{name}-kdeinit.patch
-Patch1:		%{name}-pk_api.patch
+# get it via: svn co svn://anonsvn.kde.org/home/kde/trunk/playground/sysadmin/kpackagekit
+Source0:	%{name}-%{version}-%{_snap}.tar.gz
+#Source0:	http://www.kde-apps.org/CONTENT/content-files/84745-%{name}-%{version}.tar.bz2
+# Source0-md5:	f2b3fb48e7472d9b23c34fb59acab4d5
+BuildRequires:	PackageKit-qt-devel >= 0.4.3
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	QtGui-devel >= %{qtver}
 BuildRequires:	QtNetwork-devel >= %{qtver}
 BuildRequires:	QtSvg-devel >= %{qtver} 
 BuildRequires:	automoc4
-BuildRequires:	cmake >= 2.6.1-2
+BuildRequires:	cmake >= 2.6.2
 BuildRequires:	phonon-devel
-BuildRequires:	qpackagekit-devel
 BuildRequires:	qt4-build >= %{qtver}
 BuildRequires:	qt4-qmake >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.129
@@ -38,15 +39,17 @@ the KDE interface for PackageKit.
 Interface KDE4 dla PackageKit
 
 %prep
-%setup -q -n KPackageKit
-%patch0 -p1
-%patch1 -p1
+%setup -q -n %{name}-%{version}-%{_snap}
 
 %build
 install -d build
 cd build
 %cmake \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
+	-DLIB_INSTALL_DIR=%{_libdir} \
+%if "%{_lib}" == "lib64"
+	-DLIB_SUFFIX=64 \
+%endif
 	../
 %{__make}
 
