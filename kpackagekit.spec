@@ -6,7 +6,7 @@ Summary:	the KDE interface for PackageKit
 Summary(pl.UTF-8):	Interface KDE4 dla PackageKit
 Name:		kpackagekit
 Version:	0.4.0
-Release:	0.1
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
 # get it via: svn co svn://anonsvn.kde.org/home/kde/trunk/playground/sysadmin/kpackagekit
