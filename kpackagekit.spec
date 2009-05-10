@@ -14,7 +14,7 @@ Group:		X11/Applications
 #Source0:	http://www.kde-apps.org/CONTENT/content-files/84745-%{name}-%{version}.tar.bz2
 Source0:	%{name}-%{version}-%{_snap}.tar.bz2
 # Source0-md5:	b2ff139ae8ade6929612a5b0b1fe6b41
-BuildRequires:	PackageKit-qt-devel >= 0.4.7
+BuildRequires:	PackageKit-qt-devel = %{pkver}
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	QtGui-devel >= %{qtver}
 BuildRequires:	QtNetwork-devel >= %{qtver}
