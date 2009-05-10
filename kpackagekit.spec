@@ -1,25 +1,27 @@
 
 %define		qtver	4.4.3
-%define		_snap	928700
+%define		pkver	0.4.7
+%define		_snap	966193
 
 Summary:	the KDE interface for PackageKit
 Summary(pl.UTF-8):	Interface KDE4 dla PackageKit
 Name:		kpackagekit
 Version:	0.4.0
-Release:	1
+Release:	1.%{_snap}.1
 License:	GPL v2
 Group:		X11/Applications
-# get it via: svn co svn://anonsvn.kde.org/home/kde/trunk/playground/sysadmin/kpackagekit
-#Source0:	%{name}-%{version}-%{_snap}.tar.gz
-Source0:	http://www.kde-apps.org/CONTENT/content-files/84745-%{name}-%{version}.tar.bz2
-# Source0-md5:	e08fc1f795208f474049fa7b7cd32a45
-BuildRequires:	PackageKit-qt-devel >= 0.4.3
+# get it via: svn export svn://anonsvn.kde.org/home/kde/trunk/playground/sysadmin/kpackagekit
+#Source0:	http://www.kde-apps.org/CONTENT/content-files/84745-%{name}-%{version}.tar.bz2
+Source0:	%{name}-%{version}-%{_snap}.tar.bz2
+# Source0-md5:	b2ff139ae8ade6929612a5b0b1fe6b41
+BuildRequires:	PackageKit-qt-devel >= 0.4.7
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	QtGui-devel >= %{qtver}
 BuildRequires:	QtNetwork-devel >= %{qtver}
-BuildRequires:	QtSvg-devel >= %{qtver} 
+BuildRequires:	QtSvg-devel >= %{qtver}
 BuildRequires:	automoc4
 BuildRequires:	cmake >= 2.6.2
+BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	phonon-devel
 BuildRequires:	qt4-build >= %{qtver}
 BuildRequires:	qt4-qmake >= %{qtver}
@@ -28,7 +30,8 @@ BuildRequires:	strigi-devel
 BuildRequires:	xorg-lib-libXft-devel
 BuildRequires:	xorg-lib-libXpm-devel
 BuildRequires:	xorg-lib-libXtst-devel
-Requires:	PackageKit
+Requires:	PackageKit = %{pkver}
+Requires:	PackageKit-qt = %{pkver}
 Requires:	PolicyKit-kde
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -39,7 +42,7 @@ the KDE interface for PackageKit.
 Interface KDE4 dla PackageKit
 
 %prep
-%setup -q -n %{name}
+%setup -q
 
 %build
 install -d build
@@ -65,16 +68,18 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kpackagekit
-%attr(755,root,root) %{_bindir}/kpackagekit-smart-icon
 ## this is not a symlink! vvvvvvvvvvvvv
 %attr(755,root,root) %{_libdir}/libkpackagekitlib.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kpk_addrm.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kpk_settings.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kpk_update.so
 %attr(755,root,root) %{_libdir}/kde4/kded_kpackagekitd.so
+%attr(755,root,root) %{_libdir}/kde4/libexec/kpackagekit-smart-icon
 %{_desktopdir}/kde4/kpackagekit.desktop
 %{_datadir}/apps/kpackagekit
-%{_datadir}/apps/kpackagekit-smart-icon
+%dir %{_datadir}/apps/KPackageKit
+%{_datadir}/apps/KPackageKit/KPackageKitSmartIcon.notifyrc
+%{_datadir}/dbus-1/services/org.kde.KPackageKitSmartIcon.service
 %{_datadir}/kde4/services/kded/kpackagekitd.desktop
 %{_datadir}/kde4/services/kpk_addrm.desktop
 %{_datadir}/kde4/services/kpk_settings.desktop
