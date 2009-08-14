@@ -1,19 +1,19 @@
 
 %define		qtver	4.4.3
-%define		pkver	0.5.0
-%define		_snap	1010231
+%define		pkver	0.5.1
+%define		_snap	1010505
 
 Summary:	the KDE interface for PackageKit
 Summary(pl.UTF-8):	Interface KDE4 dla PackageKit
 Name:		kpackagekit
-Version:	0.4.0
+Version:	0.4.2
 Release:	1.%{_snap}.1
 License:	GPL v2
 Group:		X11/Applications
 # get it via: svn export svn://anonsvn.kde.org/home/kde/trunk/playground/sysadmin/kpackagekit
 #Source0:	http://www.kde-apps.org/CONTENT/content-files/84745-%{name}-%{version}.tar.bz2
 Source0:	%{name}-%{version}-%{_snap}.tar.bz2
-# Source0-md5:	fe578dc379a54339e727a556048268d2
+# Source0-md5:	27c6544a8cfa2929a94165a90ac42abc
 BuildRequires:	PackageKit-qt-devel = %{pkver}
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	QtGui-devel >= %{qtver}
