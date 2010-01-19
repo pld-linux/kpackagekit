@@ -1,19 +1,19 @@
 
 %define		qtver	4.4.3
-%define		pkver	0.5.3
-%define		_snap	 1049933
+%define		pkver	0.6.0
+%define		_snap	 1077085
 
 Summary:	the KDE interface for PackageKit
 Summary(pl.UTF-8):	Interface KDE4 dla PackageKit
 Name:		kpackagekit
-Version:	0.5.1
-Release:	1.%{_snap}.2
+Version:	0.6.0
+Release:	1.%{_snap}.0
 License:	GPL v2
 Group:		X11/Applications
 # get it via: svn export svn://anonsvn.kde.org/home/kde/trunk/playground/sysadmin/kpackagekit
 #Source0:	http://www.kde-apps.org/CONTENT/content-files/84745-%{name}-%{version}.tar.bz2
 Source0:	%{name}-%{version}-%{_snap}.tar.bz2
-# Source0-md5:	fee92b699142f5aef94791bb2595d1fc
+# Source0-md5:	8f271e3045311b455bfd454b6e570b7f
 BuildRequires:	PackageKit-qt-devel >= %{pkver}
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	QtGui-devel >= %{qtver}
@@ -81,6 +81,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/apps/KPackageKitSmartIcon
 %{_datadir}/apps/KPackageKitSmartIcon/KPackageKitSmartIcon.notifyrc
 %{_datadir}/dbus-1/services/org.kde.KPackageKitSmartIcon.service
+%{_datadir}/dbus-1/services/org.freedesktop.PackageKit.service
 %{_datadir}/kde4/services/kded/kpackagekitd.desktop
 %{_datadir}/kde4/services/kpk_addrm.desktop
 %{_datadir}/kde4/services/kpk_settings.desktop
