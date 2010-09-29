@@ -1,26 +1,26 @@
 
-%define		qtver	4.4.3
-%define		pkver	0.6.0
+%define		qtver	4.6.3
+%define		pkver	0.6.3
 %define		_snap	 1093726
 
 Summary:	the KDE interface for PackageKit
 Summary(pl.UTF-8):	Interface KDE4 dla PackageKit
 Name:		kpackagekit
-Version:	0.6.0
-Release:	1.%{_snap}.0
+Version:	0.6.1
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
 # get it via: svn export svn://anonsvn.kde.org/home/kde/trunk/playground/sysadmin/kpackagekit
-#Source0:	http://www.kde-apps.org/CONTENT/content-files/84745-%{name}-%{version}.tar.bz2
-Source0:	%{name}-%{version}-%{_snap}.tar.bz2
-# Source0-md5:	be805e3f1999f424969a3c0d6a344f64
+#Source0:	http://www.kde-apps.org/CONTENT/content-files/84745-%{name}-%{version}.7z
+Source0:	%{name}-%{version}.tar.bz2
+# Source0-md5:	34b1a1433a07d7c1dcc8b438df2ca1e3
 BuildRequires:	PackageKit-qt-devel >= %{pkver}
 BuildRequires:	QtCore-devel >= %{qtver}
 BuildRequires:	QtGui-devel >= %{qtver}
 BuildRequires:	QtNetwork-devel >= %{qtver}
 BuildRequires:	QtSvg-devel >= %{qtver}
 BuildRequires:	automoc4
-BuildRequires:	cmake >= 2.6.2
+BuildRequires:	cmake >= 2.8.0
 BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	phonon-devel
 BuildRequires:	pkgconfig
