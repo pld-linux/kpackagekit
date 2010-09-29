@@ -1,6 +1,6 @@
 
 %define		qtver	4.6.3
-%define		pkver	0.6.3
+%define		pkver	0.6.8
 %define		_snap	 1093726
 
 Summary:	the KDE interface for PackageKit
