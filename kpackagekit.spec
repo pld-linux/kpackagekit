@@ -1,9 +1,7 @@
 
 %define		qtver	4.6.3
 %define		pkver	0.6.8
-%define		_snap	 1093726
-
-Summary:	the KDE interface for PackageKit
+Summary:	KDE interface for PackageKit
 Summary(pl.UTF-8):	Interface KDE4 dla PackageKit
 Name:		kpackagekit
 Version:	0.6.1
@@ -27,18 +25,18 @@ BuildRequires:	phonon-devel
 BuildRequires:	pkgconfig
 BuildRequires:	qt4-build >= %{qtver}
 BuildRequires:	qt4-qmake >= %{qtver}
-BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	rpmbuild(macros) >= 1.600
 BuildRequires:	strigi-devel
 BuildRequires:	xorg-lib-libXft-devel
 BuildRequires:	xorg-lib-libXpm-devel
 BuildRequires:	xorg-lib-libXtst-devel
-Requires:	PackageKit = %{pkver}
-Requires:	PackageKit-qt = %{pkver}
+Requires:	PackageKit >= %{pkver}
+Requires:	PackageKit-qt >= %{pkver}
 Requires:	kde4-kdebase-workspace
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-the KDE interface for PackageKit.
+KDE interface for PackageKit.
 
 %description -l pl.UTF-8
 Interface KDE4 dla PackageKit
@@ -50,18 +48,12 @@ Interface KDE4 dla PackageKit
 install -d build
 cd build
 %cmake \
-	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
-	-DLIB_INSTALL_DIR=%{_libdir} \
-%if "%{_lib}" == "lib64"
-	-DLIB_SUFFIX=64 \
-%endif
 	../
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
-%{__make} -C build install \
+%{__make} -C build install/fast \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
